@@ -10,10 +10,10 @@ from flask_socketio import SocketIO, send, emit, join_room, leave_room
 
 # configure app
 app = Flask(__name__)
-app.secret_key = 'replace later'
+app.secret_key = os.environ.get(SECRET_KEY)
 
 #configure database
-app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres.zqmibadinmfjdpvrbvpm:Nengimote123!@aws-0-us-west-1.pooler.supabase.com:5432/postgres'
+app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get(DATABAASE_URL)
 db = SQLAlchemy(app)
 
 #Initialize Flask-SocketIO
